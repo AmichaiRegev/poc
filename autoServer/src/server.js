@@ -8,9 +8,13 @@ app.get('/', (req,res) => {
 });
 
 app.get('/createAuto', (req,res) => {
-    res.json({test: req.query.id ?? 'NA'});
+    let id = req.query.id;
+    if (!id) { 
+        id = 100;
+    }
+    res.json({test: id});
 });
 
 app.listen(port, () => {
-    console.log('Server up and running.\nListens to: http://localhost:${port}');
+    console.log(`Server up and running.\nListens to: http://localhost:${port}`);
 });
